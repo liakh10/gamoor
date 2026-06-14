@@ -1,4 +1,4 @@
-const CA    = "SOON";   // <-- paste real CA here
+const CA    = "2fhkzBgU47raPkUdXvb8M1BBe2ooia2n3gBje6RGpump";   // <-- paste real CA here
 const X_URL = "https://x.com/soon";   // <-- paste real X link here
 
 const HAS_CA   = CA !== "SOON";
