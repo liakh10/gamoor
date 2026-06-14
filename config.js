@@ -1,7 +1,7 @@
 const CA    = "SOON";   // <-- paste real CA here
 const X_URL = "https://x.com/soon";   // <-- paste real X link here
 
-const HAS_CA   = CA !== "COMING SOON";
+const HAS_CA   = CA !== "SOON";
 const PUMP_URL = HAS_CA ? `https://pump.fun/coin/${CA}` : "#";
 const DEX_URL  = HAS_CA ? `https://dexscreener.com/solana/${CA}` : "#";
 
