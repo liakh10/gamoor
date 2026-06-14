@@ -1,17 +1,17 @@
 /* ---------- GAME DATA ---------- */
 const GAMES = [
-  { name:"CS2",        icon:"🔫", color:"#d98c1f", verdict:"global elite" },
-  { name:"MINECRAFT",  icon:"⛏️", color:"#3aa856", verdict:"ender dragon dead" },
-  { name:"GTA",        icon:"🚗", color:"#1f9b6e", verdict:"100% / no cops" },
-  { name:"LEAGUE",     icon:"⚔️", color:"#1a6fd1", verdict:"challenger" },
-  { name:"FORTNITE",   icon:"🛡️", color:"#7b3ff2", verdict:"victory royale" },
-  { name:"ELDEN RING", icon:"💀", color:"#b89a3a", verdict:"no-hit run" },
-  { name:"VALORANT",   icon:"🎯", color:"#d6334b", verdict:"radiant" },
-  { name:"DARK SOULS", icon:"🔥", color:"#a33020", verdict:"all bosses" },
-  { name:"ROBLOX",     icon:"🧱", color:"#cf2a2a", verdict:"obby cleared" },
-  { name:"DOTA 2",     icon:"🛡️", color:"#9a2b1e", verdict:"divine rank" },
-  { name:"WARZONE",    icon:"💣", color:"#5a6b2f", verdict:"nuke unlocked" },
-  { name:"OSU!",       icon:"🎵", color:"#e0408f", verdict:"FC ranked #1" },
+  { logo:"logos/cs2.png",        color:"#d98c1f", verdict:"global elite" },
+  { logo:"logos/dota2.png",      color:"#9a2b1e", verdict:"divine rank" },
+  { logo:"logos/eldenring.png",  color:"#b89a3a", verdict:"no-hit run" },
+  { logo:"logos/pubg.png",       color:"#d6a01f", verdict:"chicken dinner x999" },
+  { logo:"logos/apex.png",       color:"#d6334b", verdict:"apex predator" },
+  { logo:"logos/gta5.png",       color:"#1f9b6e", verdict:"100% / no cops" },
+  { logo:"logos/cyberpunk.png",  color:"#e8d020", verdict:"street cred max" },
+  { logo:"logos/bg3.png",        color:"#7b3ff2", verdict:"every ending seen" },
+  { logo:"logos/rust.png",       color:"#a33020", verdict:"base never raided" },
+  { logo:"logos/siege.png",      color:"#1a6fd1", verdict:"diamond" },
+  { logo:"logos/terraria.png",   color:"#3aa856", verdict:"moon lord down" },
+  { logo:"logos/dontstarve.png", color:"#5a6b2f", verdict:"day 9999" },
 ];
 
 const STATS = [
@@ -61,6 +61,7 @@ function enter(){
   document.getElementById("ticker").classList.add("on");
   document.getElementById("sound").classList.add("on");
   revealGames();
+  enableSound();   // fires inside the click gesture -> autoplay allowed
 }
 document.getElementById("boot").addEventListener("click", enter);
 
@@ -72,8 +73,7 @@ GAMES.forEach(g => {
   d.style.setProperty("--gc", g.color);
   d.innerHTML = `
     <img src="favicon.png" alt="" class="game-face" />
-    <div class="game-icon">${g.icon}</div>
-    <div class="game-name">${g.name}</div>
+    <img src="${g.logo}" alt="" class="game-logo" />
     <div class="game-verdict">${g.verdict}</div>`;
   gamesEl.appendChild(d);
 });
@@ -124,17 +124,22 @@ function keyClick(){
   o.start(); o.stop(actx.currentTime + 0.05);
 }
 
-soundBtn.addEventListener("click", () => {
+function enableSound(){
   initAudio();
   if (actx.state === "suspended") actx.resume();
-  soundOn = !soundOn;
-  if (soundOn){
-    startHum();
-    soundBtn.textContent = "SOUND: ON";
-  } else {
-    if (hum){ hum.stop(); hum = null; }
-    soundBtn.textContent = "SOUND: OFF";
-  }
+  if (soundOn) return;
+  soundOn = true;
+  startHum();
+  soundBtn.textContent = "SOUND: ON";
+}
+function disableSound(){
+  if (!soundOn) return;
+  soundOn = false;
+  if (hum){ hum.stop(); hum = null; }
+  soundBtn.textContent = "SOUND: OFF";
+}
+soundBtn.addEventListener("click", () => {
+  if (soundOn) disableSound(); else enableSound();
 });
 
 document.addEventListener("mouseover", e => {
