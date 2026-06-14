@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>$gamoor</title>
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- BOOT / SPLASH -->
+  <div id="boot">
+    <div class="boot-inner">
+      <pre class="boot-log" id="bootLog"></pre>
+      <div class="boot-start" id="bootStart">
+        <img src="favicon.png" alt="" class="boot-face" />
+        <div class="boot-press">PRESS START</div>
+        <div class="boot-hint">[ click to enter ]</div>
+      </div>
+    </div>
+    <div class="scanlines"></div>
+  </div>
+
+  <!-- MAIN -->
+  <main id="app" aria-hidden="true">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="rgb-bg"></div>
+      <div class="hero-grid">
+        <div class="hero-art">
+          <div class="art-glow"></div>
+          <img src="gamoor.png" alt="gamoor" class="hero-img" />
+          <div class="art-glitch"></div>
+        </div>
+        <div class="hero-text">
+          <h1 class="title">$GAMOOR</h1>
+          <p class="tag">he never logged off.</p>
+          <p class="sub">eyes bleeding, ping perfect. one more game.</p>
+
+          <div class="ca" id="ca" title="copy">
+            <span class="ca-label">CA</span>
+            <span class="ca-val" id="caVal">SOON</span>
+          </div>
+
+          <div class="links">
+            <a id="xLink" class="btn" target="_blank" rel="noopener">X</a>
+            <a id="pumpLink" class="btn" target="_blank" rel="noopener">PUMP</a>
+            <a id="dexLink" class="btn" target="_blank" rel="noopener">DEX</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BACKLOG -->
+    <section class="backlog">
+      <h2 class="sec-title">GAMES HE BEAT</h2>
+      <p class="sec-note">100% completion. no sleep. no lobby left standing.</p>
+      <div class="games" id="games"></div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+      <h2 class="sec-title">PLAYER PROFILE</h2>
+      <div class="profile">
+        <img src="favicon.png" alt="" class="profile-face" />
+        <div class="profile-meta">
+          <div class="rank">RANK: <b>TERMINAL</b></div>
+          <div class="status">STATUS: <b>still online</b></div>
+        </div>
+        <ul class="stat-list" id="statList"></ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- TICKER -->
+  <div class="ticker" id="ticker" aria-hidden="true"></div>
+
+  <!-- SOUND -->
+  <button id="sound" class="sound-btn">SOUND: OFF</button>
+
+  <script src="config.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
